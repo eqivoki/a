@@ -1,0 +1,156 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <title>Admin Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<h3 class="lead heading">Админ</h3>
+<table class="table">
+    <tr>
+        <td>Текущий год:</td>
+        <td>{{ day }}</td>
+        <td> Количество проголосовавших: {{ counter }} игроков из {{ q }}
+            <form action="{% url 'user_page:to_admin_page' %}" method="post">
+
+                {% csrf_token %}
+
+                <button class="btn btn-dark shap">Обновить страничку</button>
+
+            </form>
+        </td>
+        <td>Текущая игра : {{ game_id }}</td>
+        <td><a>Тут добавим кнопку на смену игры.</a>   <a>Может. еще стоит добавить кнопука покаать всех игроков во всех играх</a></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td colspan="2">
+            <form action="{% url 'user_page:next_day_admin' day %}" method="post">
+
+                {% csrf_token %}
+
+                <button class="btn btn-dark button1">Следующий год</button>
+
+            </form>
+
+        </td>
+        <td colspan="2">
+            <form action="{% url 'user_page:next_day_admin' 1000 %}" method="post">
+
+                {% csrf_token %}
+
+                <button class="btn btn-dark button1">Предыдущий год</button>
+
+            </form>
+
+        </td>
+        <td colspan="2">
+
+            <form action="{% url 'user_page:next_day_admin' 400 %}" method="post">
+
+                {% csrf_token %}
+
+                <button class="btn btn-dark button1">Обнулить всем активы и года</button>
+
+            </form>
+
+        </td>
+        <td colspan="2">
+
+            <form action="{% url 'user_page:next_day_admin' 500 %}" method="post">
+
+                {% csrf_token %}
+
+                <button class="btn btn-dark button1">Удалить всех юзеров</button>
+
+            </form>
+
+        </td>
+        <td colspan="2">
+
+            <form action="{% url 'user_page:next_day_admin' 600 %}" method="post">
+
+                {% csrf_token %}
+
+                <button class="btn btn-dark button1">Добавить тестовых юзеров</button>
+
+            </form>
+
+        </td>
+
+
+    </tr>
+</table>
+<h4 class="lead heading">Топ игроков</h4>
+
+<table class="table tb">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Капитал</th>
+        <th scope="col">Поменять имя</th>
+        <th scope="col">Сделал ход или не сделал</th>
+    </tr>
+    </thead>
+<tbody>
+{% if players %}
+    {% for i in players %}
+    <tr>
+        <th scope="row"></th>
+        <td>
+            <form action="{% url 'user_page:next_step' i.Name%}" method="post">
+
+                {% csrf_token %}
+
+                <button style="background-color: transparent; border: none;">{{ i.Name }}</button>
+
+            </form>
+        </td>
+        <td>{{ i.sum_active }} ({{ i.sum_active_percentage_increase }})</td>
+        <td>
+                <form action="{% url 'user_page:to_admin_page'%}" method="post">
+
+                {% csrf_token %}
+
+                <button value="{{ i.Name }}" name="user" style="background-color: transparent; border: none;">...</button>
+
+            </form>
+        </td>
+        <td>
+            {{ i.Day }}
+        </td>
+    </tr>
+    {% endfor %}
+{% endif %}
+</tbody>
+</table>
+<!-- Optional JavaScript -->
+<script>
+$('.tb tbody tr').each(function(i) {
+var number = i + 1;
+$(this).find('th:first').text(number+".");
+});
+</script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

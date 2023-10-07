@@ -1,0 +1,41 @@
+/* Add your custom styles here */
+.body_ch {
+    background-color: #f5f5f5;
+}
+
+.custom-control {
+    margin-bottom: 20px;
+}
+
+.heading {
+    margin-bottom: 10px;
+}
+
+.table {
+    width: 100%;
+}
+
+.fixed-bottom {
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-bottom button {
+    margin: 5px;
+}
+
+.blacked,
+.greyed {
+    margin-right: 5px;
+}
+
+.verysmall {
+    font-size: 12px;
+}
+
+.mard,
+.mard1,
+.mard2 {
+    margin-left: 5px;
+}

@@ -1,0 +1,379 @@
+.button1{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+}
+#polo1{
+    margin: 2px;
+    margin-bottom: -0.7rem;
+    height: 0.05rem;
+    border-color: #003fa8
+}
+#polo2{
+    margin: 2px;
+    margin-bottom: -0.1rem;
+    height: 0.05rem;
+    border-color: #003fa8
+}
+#polo3{
+    height: 0.165rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.7rem;
+}
+.n{
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.ror{
+    max-width: 320px;
+    /*background: aqua;*/
+    width: 100% !important;
+}
+
+#divauty {
+    display: flex;
+    flex-direction: column;
+    /*background: url("../hard/history_black.svg");*/
+    width: 100vw;
+    height: 100vh;
+}
+#rer {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    padding: 16px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+#er{
+    justify-content: flex-end;
+}
+.btn{
+    /*color: cornflowerblue;*/
+}
+#admin_rename{
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        border: 3px solid #034b99;
+        border-radius: 10px;
+        color: #034b99;
+}
+
+#pop_ok{
+    display: none;
+}
+#pop_ok:target {display: block;}
+
+.body_ch{
+    overflow: hidden;
+}
+.div_body{
+    /*position: fixed;*/
+    display: grid;
+    grid-template-rows: 90% 10%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-columns: 1fr;
+    width: 100vw;
+    height: 87vh;
+    justify-content: space-between;
+    grid-template-areas:
+            "meat meat meat"
+            "knopki_invest knopki_top history"
+}
+@media all and (orientation: landscape), all and (min-width: 480px) {
+
+}
+#bdy{
+    line-height: 1.0;
+}
+
+.knopki_div{display: flex}
+
+.knopki_invest{
+    grid-area: knopki_invest;}
+
+
+.invest_logo{
+    background: url("../hard/invest.svg") no-repeat top left;
+    width: 40px;
+    height: 40px;
+    fill: #ababab;
+    background-size: contain;}
+.top_logo{
+    background: url("../hard/top.svg") no-repeat top left;
+    width: 40px;
+    height: 40px;
+    fill: #ababab;
+    background-size: contain;}
+.history_logo{
+    background: url("../hard/history.svg") no-repeat top left;
+    width: 40px;
+    height: 40px;
+    fill: #ababab;
+    background-size: contain;}
+
+
+    /*background-color: aqua;*/
+
+.knopki_history{
+    /*background-color: red;*/
+
+}
+.greyed {
+  fill: rgb(127, 180, 239);
+  width: 40px;
+  height: 40px;
+}
+.blacked {
+  fill: rgb(0, 63, 168);
+  width: 40px;
+  height: 40px;
+}
+
+.history{
+    grid-area: history;
+    /*background-color: aqua;*/
+}
+.knopki_top{
+   grid-area: knopki_top;
+    /*background-color: #8660a9;*/
+}
+
+.meat{
+    overflow: auto;
+    grid-area: meat;
+    /*background-color: #6e5334;*/
+}
+
+/*@media all and (max-width: 575px) {*/
+/*.row {*/
+/*grid-template-areas:*/
+/*"header"*/
+/*"article"*/
+/*"ads"*/
+/*"nav";*/
+/*grid-template-rows: 80px 1fr 70px 1fr ;*/
+/*grid-template-columns: 1fr;*/
+/*}*/
+/*}*/
+.table1{
+    position: center;
+    line-height: 0.9rem;
+    text-align: left;
+}
+.table2{
+    table-layout: auto;}
+.table{
+  margin-bottom: 0; margin-top: 0;
+}
+.borderless td, .borderless th {
+    border: none;
+}
+
+.first_knopka{
+    text-align: center;
+}
+
+.width_bottom {
+    width: 1fr;
+    margin-top: 5%;
+    height: 50px;
+    position: relative;
+    justify-content: center;
+
+}
+.bodyauth{
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+}
+.rerur{
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.logo{
+    background: url(../hard/logo.svg) center bottom no-repeat ;
+    width: 100%;
+    height: 100%;
+}
+
+
+.shapee{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: bottom;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0 16px 4px;
+    position: relative;
+    line-height: 0.875rem;
+}
+ .big-checkbox {width: 4%; height: 4%;position: center; margin-right: 5%}
+
+.re{
+    text-align: center;
+    font-family: Arial, Helvetica, Verdana, sans-serif; /* Гарнитура шрифта */
+    font-weight: lighter; /* Светлое начертание */
+    min-height: 2.375rem;
+    max-height: 48px;
+    width: 100% !important;
+    line-height: 2.375rem;
+    max-width: 20rem;
+    min-width: 6.25rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 0.85rem;
+    padding: 0.25rem 0.375rem;
+}
+ .labelcustom {color: #FFF;}
+
+.custom-control {
+  display: inline-block !important;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+}
+
+.shap{
+    width: 6rem;
+    height: 3rem;
+}
+@font-face { /*HelveticaC Bold*/
+font-family: 'HelveticaCBold';
+src: url('../fonts/helveticac-bold.eot');
+src: url('../fonts/helveticac-bold.eot') format('embedded-opentype'),
+     url('../fonts/helveticac-bold.woff') format('woff'),
+     url('../fonts/helveticac-bold.ttf') format('truetype'),
+     url('../fonts/helveticac-bold.svg#HelveticaCBold') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+  font-family: 'Calibri light';
+}
+
+.heading{
+    text-align: center;
+    font-weight: 650;
+    color: rgb(1,31,127);
+    font-family: 'Calibri light';
+}
+
+.heading1{
+    height: 1.4rem;
+font-weight: 450;
+}
+
+
+.authorizepage{
+    padding: 50px;
+    background: #c10b0b;
+    position: fixed; top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-width: 320px;
+}
+
+.text_h{
+    color: rgba(255,255,255,0.8);
+    height: 220%;
+    background: #ccc;
+}
+.df{ color: rgba(210, 20, 20, 0.8); font-size: 141%}
+
+.dff{
+    text-align: left;
+}
+#percent{
+    padding-left: 2%;
+    font-weight: normal;
+}
+.btn-primary{
+background-color: rgb(0, 63, 168);
+color: white;
+}
+.btn-primay:hover,.btn-primary:focus,.btn-primary:visited{
+background-color: rgb(0, 63, 168);
+color: white;
+}
+.btn-outline-primary{
+        color: rgb(0, 63, 168);
+}
+
+
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:visited{
+background-color: rgb(0, 63, 168);
+color: white;}
+ /*#TODO Доделать чтобы кнопки встали вряд + доделать - цвет кнопки на синий + доделать - отмасштабиро*/
+ /*   это на все кнопки + доделать сделать выползающие окна. и все?*/
+
+#row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+
+
+.text_small{ font-size: 9pt; margin-top: -5%}
+
+.textik{font-size: 14pt}
+
+.textulic{font-size: 12pt; color: slategrey}
+.textulic1{font-size: 14pt; color: slategrey}
+.verysmall{font-size: 8pt; color: slategrey; margin-right: 5% }
+.mard{    position: relative;
+    bottom: 40%; right: 0}
+.mard1{    position: relative;
+    bottom: 40%;}
+.mard2{    position: relative;
+    bottom: 40%; left: 0}
+.mard3{}
+
+.popup {
+    width: 100%;
+    height: 100%;
+    background-color: #924646;
+    top: 0;
+    left: 0;
+}
+
+.popup__body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #924646;
+}
+
+.popup__content {
+}
+
+.popup__close {
+}
+
+.popup__title {
+}
+
+.popup__text {
+}

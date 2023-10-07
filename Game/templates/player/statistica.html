@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Economic Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/style2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+</head>
+<body class="body_ch">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="meat custom-control">
+                {% if player %}
+                    <h2 class="lead heading">История операций</h2>
+                {% else %}
+                    <h3 class="lead heading">Not found stata</h3>
+                {% endif %}
+                <hr>
+                <canvas id="chart"></canvas>
+            </div>
+            <table class="table">
+                <thead class="table1">
+                <tr class="textik heading table1">
+                    <td>Актив</td>
+                    <td>Вложение</td>
+                    <td>Доход</td>
+                </tr>
+                </thead>
+                {% if user_choices %}
+                    {%  for choice_per_year in user_choices %}
+                        <tr>
+                            <td></td>
+                            <td class="table1"><small class="text-muted textik">{{ choice_per_year.Day }}й год</small></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="textulic1 table1">A</td>
+                            <td class="textulic table1">{{ choice_per_year.Name1.Name }}</td>
+                            <td class="textulic1 table1">{{ choice_per_year.ActA_increase }}</td>
+                        </tr>
+                        <tr>
+                            <td class="textulic1 table1">B</td>
+                            <td class="textulic table1">{{ choice_per_year.Name2.Name }}</td>
+                            <td class="textulic1 table1">{{ choice_per_year.ActB_increase }}</td>
+                        </tr>
+                        <tr>
+                            <td class="textulic1 table1">C</td>
+                            <td class="textulic table1">{{ choice_per_year.Name3.Name }}</td>
+                            <td class="textulic1 table1">{{ choice_per_year.ActC_increase }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td></td>
+                        <td><h4 class="lead heading">Здесь появится статистика по предыдущим годам</h4></td>
+                        <td></td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+           <!-- Bottom Buttons -->
+    <div class="fixed-bottom text-center">
+        <div class="row">
+            <div class="col">
+                <form action="{% url 'user_page:to_top' player.Name %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary btn-block">
+                        <img class="blacked" src="../../static/hard/top.svg" alt="" width="40" height="40" />
+                        <span class="verysmall mard2">Топ</span>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+                <form action="{% url 'user_page:to_MainWindow' player.Name %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-secondary btn-block">
+                        <img class="greyed" src="../../static/hard/invest.svg" alt="" width="40" height="40" />
+                        <span class="verysmall mard">Инвестировать</span>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+                <form action="{% url 'user_page:to_top_players' player.Name %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-success btn-block">
+                        <img class="greyed" src="../../static/hard/history.svg" alt="" width="40" height="40" />
+                        <span class="verysmall mard1">История</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>
+<script>
+    // JavaScript code for the chart (you can keep this code here)
+</script>
+<script>
+    // JavaScript code for reloading the page (you can keep this code here)
+</script>
+<script>
+    // JavaScript code for replacing SVG images with inline SVGs (you can keep this code here)
+</script>
+</body>
+</html>

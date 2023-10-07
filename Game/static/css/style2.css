@@ -1,0 +1,76 @@
+/* Reset some default styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Background styling */
+.body_ch {
+    background-image: url('background.jpg'); /* Background Image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+/* Header and content container */
+.container {
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+/* Heading styles */
+.heading {
+    font-size: 1.8rem;
+    color: #333; /* Dark text color */
+}
+
+/* Chart container */
+#chart {
+    max-width: 100%;
+}
+
+/* Table styles */
+.table1 th {
+    background-color: #007bff; /* Header background color */
+    color: #fff; /* Header text color */
+    font-weight: bold;
+}
+
+.table1 td {
+    background-color: #f9f9f9; /* Table row background color */
+}
+
+/* Buttons and icons */
+.btn {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker shade of the primary color */
+}
+
+/* Icon styles */
+.greyed, .blacked {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Additional custom styles go here */
+
+/* Media queries for responsive design (customize as needed) */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.5rem;
+    }
+}
