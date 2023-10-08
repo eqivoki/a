@@ -16,12 +16,15 @@ class GameRules:
         self.noise = None
 
         # Для государственной облигации
-
+        self.gov_bond_scalar = 0.005
         # Для акции Роста
         self.was_more_than_40 = None
+        self.voters_ratio = None
 
         # Для Обычной акции (барсучий случай ориг.)
-
+        self.noise_simple_1 = self.make_random_noise(0.035, 0.0125)
+        self.noise_simple_2 = self.make_random_noise(0.015, 0.0125)
+        self.simple_add = np.random.choice(a=[self.noise_simple_1, self.noise_simple_2], size=1, p=[1 / 2, 1 / 2])
         # Для недвижимости
 
         # Для третей акции
@@ -58,26 +61,59 @@ class GameRules:
         return (1 / 3) * (amount * (1 + self.corp_bond_scalar + self.inflation + self.noise) +
                           amount * self.education * is_not_mortgage * educ_count)
 
-    def calc_gov_bond(self, amount):
-        pass
+    def calc_gov_bond(self, amount, educ_count, is_not_mortgage) -> int:
+        return (1 / 3) * (amount * (1 + self.gov_bond_scalar + self.inflation + self.noise) +
+                          amount * self.education * is_not_mortgage * educ_count)
 
-    def calc_growth_stock(self, amount):
-        pass
+    def calc_education(self,amount, educ_count):
+        # TODO придумать, как детектить то, что если если образование, то нужно деньги сохранить
+        return educ_count + 1 if educ_count < 8 else 7, amount
 
-    def calc_simple_stock(self, amount):
-        pass
+    def calc_simple_stock(self, amount, educ_count):
+        expected_return = 1 + self.inflation - 0.01
+        '''
+        ЭТО КАК РАЗ БАРСУЧИЙ СЛУЧАЙ
+        нормальное распределение с матожиданием 4 и дисперсией 1. При этом дивы по дефолту 3
+        '''
+        return (1 / 3) * (amount * (expected_return + self.simple_add) + educ_count * amount * self.education)
+    def calc_growth_stock(self, amount, year, educ_count):
+        '''
+        АКЦИЯ РОСТА
+        '''
+        market_premium = 0
+        if not self.was_more_than_40:
+            if year == 7:
+                market_premium = self.inflation + 0.035
+            elif year == 8:
+                market_premium = self.inflation + 0.06
+            elif year == 9:
+                market_premium = self.inflation + 0.11
+            elif year == 10:
+                market_premium = self.inflation + 0.15
+        else:
+            market_premium = self.inflation - 0.01
+        if self.voters_ratio > 0.3:
+            if self.was_more_than_40:
+                market_premium = self.inflation - 0.01
+            else:
+                market_premium = self.inflation - 0.29
+                self.checker = True
+        else:
+            pass
+
+        return  (1 / 3) * (amount * (1 + market_premium) +  amount * educ_count) #TODO мб не так работает образование
 
     def calc_mortgage(self, amount):
-        pass
+        return 0
 
     def calc_third_stock(self, amount):
-        pass
+        return 0
 
     def calc_futures(self, amount):
-        pass
+        return 0
 
     def calc_option(self, amount):
-        pass
+        return 0
 
 class Repository(GameRules):
     def __init__(self, interest_rate):
@@ -150,7 +186,7 @@ class InvestingOptions:
         player.Education += 1
         player.save()
         return mon_prev * ( 1 +player.Education * flag * self.educ )
-    '''
+
 
     def korp_bond(self, indexes,
                   mon_fut, flag=0):
@@ -169,6 +205,7 @@ class InvestingOptions:
                                                      flag * self.data.loc[indexes, "TOTAL"] * self.educ * self.data.loc[
                                                          indexes, 'educ'])
         return self
+        '''
 
     def education(self, indexes, mon_fut):
         # поставь ограничение на 8-ой уровень образования

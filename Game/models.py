@@ -91,15 +91,6 @@ class Player(models.Model):
 
     def education(self):
         return f'{round(self.Education/3, 2)}'
-        # if self.Education == 0:
-        #     return '0'
-        # elif self.Education == 1:
-        #     return '1'
-        # elif self.Education > 4:
-        #     return f'Уровень образования {self.Education}.
-        #     Надеюсь, вы уже поняли, что дефолт скоро... очень скоро :)))'
-        # else:
-        #     return f'{self.Education}'
 
     def sum_active_percentage_increase(self):
         res = (self.Active_a + self.Active_b - self.Active_a_pred - self.Active_b_pred + self.Active_c
